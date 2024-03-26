@@ -13,7 +13,7 @@ CREATE TABLE instructors (
     instructor_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    department_id INT,
+    department_id INT
 );
 
 CREATE TABLE departments (
@@ -141,6 +141,117 @@ INSERT INTO departments (name, head_of_department_id) VALUES
 ('Physical Education', 13),
 ('Art', 14),
 ('Music', 15);
+
+INSERT INTO courses (name, credits, department_id) VALUES
+('Math 101', 3, 1),
+('History 101', 4, 2),
+('Computer Science 101', 3, 3),
+('English Literature 101', 3, 4),
+('Physics 101', 4, 5),
+('Chemistry 101', 3, 6),
+('Biology 101', 4, 7),
+('Art 101', 3, 8),
+('Music 101', 3, 9),
+('Economics 101', 4, 10),
+('Psychology 101', 3, 11),
+('Sociology 101', 4, 12),
+('Political Science 101', 3, 13),
+('Geography 101', 3, 14),
+('Physical Education 101', 4, 15);
+
+INSERT INTO academic_advisors (name, email, department_id) VALUES
+('Dr. White', 'drwhite@example.com', 1),
+('Prof. Brown', 'profbrown@example.com', 2),
+('Ms. Green', 'msgreen@example.com', 3),
+('Dr. Black', 'drblack@example.com', 1),
+('Prof. Gray', 'profgray@example.com', 2),
+('Dr. Davis', 'drdavis@example.com', 3),
+('Prof. Martinez', 'profmartinez@example.com', 1),
+('Ms. Thomas', 'msthomas@example.com', 2),
+('Dr. Garcia', 'drgarcia@example.com', 3),
+('Prof. Rodriguez', 'profrodriguez@example.com', 1),
+('Ms. Hernandez', 'mshernandez@example.com', 2),
+('Dr. King', 'drking@example.com', 3),
+('Prof. Adams', 'profadams@example.com', 1),
+('Ms. Campbell', 'mscampbell@example.com', 2),
+('Dr. Wilson', 'drwilson@example.com', 3);
+
+INSERT INTO students (name, email, dob, department_id, advisor_id) VALUES
+('Alice Johnson', 'alice@example.com', '2000-01-01', 1, 1),
+('Bob Smith', 'bob@example.com', '2000-02-01', 2, 2),
+('Charlie Brown', 'charlie@example.com', '2000-03-01', 3, 3),
+('David Davis', 'david@example.com', '2000-04-01', 4, 4),
+('Emma Wilson', 'emma@example.com', '2000-05-01', 5, 5),
+('Frank Miller', 'frank@example.com', '2000-06-01', 6, 6),
+('Grace Taylor', 'grace@example.com', '2000-07-01', 7, 7),
+('Henry Anderson', 'henry@example.com', '2000-08-01', 8, 8),
+('Ivy Thomas', 'ivy@example.com', '2000-09-01', 9, 9),
+('Jack Roberts', 'jack@example.com', '2000-10-01', 10, 10),
+('Kevin Brown', 'kevin@example.com', '2000-11-01', 11, 11),
+('Lily Moore', 'lily@example.com', '2000-12-01', 12, 12),
+('Mia Wilson', 'mia@example.com', '2001-01-01', 13, 13),
+('Noah Taylor', 'noah@example.com', '2001-02-01', 14, 14),
+('Olivia Lee', 'olivia@example.com', '2001-03-01', 15, 15);
+
+
+INSERT INTO enrollments (student_id, course_id, enrollment_date) VALUES
+(1, 1, '2023-09-01'),
+(2, 2, '2023-09-02'),
+(3, 3, '2023-09-03'),
+(4, 4, '2023-09-04'),
+(5, 5, '2023-09-05'),
+(6, 6, '2023-09-06'),
+(7, 7, '2023-09-07'),
+(8, 8, '2023-09-08'),
+(9, 9, '2023-09-09'),
+(10, 10, '2023-09-10'),
+(11, 11, '2023-09-11'),
+(12, 12, '2023-09-12'),
+(13, 13, '2023-09-13'),
+(14, 14, '2023-09-14'),
+(15, 15, '2023-09-15');
+
+
+
+INSERT INTO assignments (course_id, name, due_date) VALUES
+(1, 'Assignment 1', '2023-09-20'),
+(2, 'Assignment 2', '2023-09-21'),
+(3, 'Assignment 3', '2023-09-22'),
+(4, 'Assignment 4', '2023-09-23'),
+(5, 'Assignment 5', '2023-09-24'),
+(6, 'Assignment 6', '2023-09-25'),
+(7, 'Assignment 7', '2023-09-26'),
+(8, 'Assignment 8', '2023-09-27'),
+(9, 'Assignment 9', '2023-09-28'),
+(10, 'Assignment 10', '2023-09-29'),
+(11, 'Assignment 11', '2023-09-30'),
+(12, 'Assignment 12', '2023-10-01'),
+(13, 'Assignment 13', '2023-10-02'),
+(14, 'Assignment 14', '2023-10-03'),
+(15, 'Assignment 15', '2023-10-04');
+
+INSERT INTO grades (enrollment_id, assignment_id, grade_value) VALUES
+(1, 1, 'A'),
+(2, 2, 'B'),
+(3, 3, 'A'),
+(4, 4, 'B'),
+(5, 5, 'A'),
+(6, 6, 'B'),
+(7, 7, 'A'),
+(8, 8, 'B'),
+(9, 9, 'A'),
+(10, 10, 'B'),
+(11, 11, 'A'),
+(12, 12, 'B'),
+(13, 13, 'A'),
+(14, 14, 'B'),
+(15, 15, 'A');
+
+
+
+
+
+
 
 
 
