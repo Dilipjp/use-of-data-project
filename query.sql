@@ -37,6 +37,7 @@ CREATE TABLE courses (
     name VARCHAR(255) NOT NULL,
     credits INT,
     semester VARCHAR(255),
+    capacity INT,
     department_id INT,
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
@@ -152,22 +153,22 @@ INSERT INTO departments (name, head_of_department_id) VALUES
 ('Art', 14),
 ('Music', 15);
 
-INSERT INTO courses (name, credits, semester, department_id) VALUES
-('Math 101', 3,'Spring 2023', 1),
-('History 101', 4, 'Fall 2023', 2),
-('Computer Science 101', 3, 'Winter 2023', 3),
-('English Literature 101', 3,'Spring 2023', 4),
-('Physics 101', 4, 'Summer 2023', 5),
-('Chemistry 101', 3, 'Fall 2023', 6),
-('Biology 101', 4, 'Winter 2023', 7),
-('Art 101', 3, 'Fall 2023', 8),
-('Music 101', 3,'Spring 2023', 9),
-('Economics 101', 4, 'Winter 2023', 10),
-('Psychology 101', 3, 'Fall 2023', 11),
-('Sociology 101', 4, 'Summer 2023', 12),
-('Political Science 101', 3, 'Spring 2023', 13),
-('Geography 101', 3, 'Fall 2023', 14),
-('Physical Education 101', 4, 'Winter 2023', 15);
+INSERT INTO courses (name, credits, semester, capacity, department_id) VALUES
+('Math 101', 3,'Spring 2023', 1, 1),
+('History 101', 4, 'Fall 2023', 20, 2),
+('Computer Science 101', 3, 'Winter 2023', 30, 3),
+('English Literature 101', 3,'Spring 2023', 45, 4),
+('Physics 101', 4, 'Summer 2023', 40, 5),
+('Chemistry 101', 3, 'Fall 2023', 30, 6),
+('Biology 101', 4, 'Winter 2023', 20, 7),
+('Art 101', 3, 'Fall 2023', 25, 8),
+('Music 101', 3,'Spring 2023', 100, 9),
+('Economics 101', 4, 'Winter 2023', 60, 10),
+('Psychology 101', 3, 'Fall 2023', 100, 11),
+('Sociology 101', 4, 'Summer 2023', 200, 12),
+('Political Science 101', 3, 'Spring 2023', 25, 13),
+('Geography 101', 3, 'Fall 2023', 150, 14),
+('Physical Education 101', 4, 'Winter 2023', 200, 15);
 
 INSERT INTO academic_advisors (name, email, department_id) VALUES
 ('Dr. White', 'drwhite@example.com', 1),
@@ -556,7 +557,7 @@ FROM
     campus_events;
 
 -- 23 Retrieve the list of students who are enrolled in courses but have not attended any events.
-    
+-- To this we need extra table called student_events    
     
   SELECT
     s.student_id,
@@ -632,9 +633,206 @@ GROUP BY
 ORDER BY
     enrollment_count DESC
 LIMIT 1;
--- 29
-   
+-- 28 Find the student with the most assignments submitted.
+SELECT
+    s.student_id,
+    s.name AS student_name,
+    COUNT(DISTINCT g.assignment_id) AS num_assignments
+FROM
+    students s
+JOIN enrollments e ON
+    s.student_id = e.student_id
+JOIN grades g ON
+    e.enrollment_id = g.enrollment_id
+GROUP BY
+    s.student_id,
+    s.name
+ORDER BY
+    num_assignments
+DESC
+LIMIT 1;
+-- 29 List all assignments that have not been graded yet.
 
+SELECT
+    a.assignment_id,
+    a.name AS assignment_name
+FROM
+    assignments a
+LEFT JOIN grades g ON
+    a.assignment_id = g.assignment_id
+WHERE
+    g.grade_id IS NULL;
+-- 30 Calculate the average number of assignments submitted by students in each department.
+SELECT
+    d.department_id,
+    d.name AS department_name,
+    COUNT(DISTINCT g.assignment_id) / COUNT(DISTINCT e.enrollment_id) AS avg_assignments_per_student
+FROM
+    departments d
+JOIN academic_advisors a ON
+    d.department_id = a.department_id
+JOIN students s ON
+    a.advisor_id = s.advisor_id
+JOIN enrollments e ON
+    s.student_id = e.student_id
+JOIN grades g ON
+    e.enrollment_id = g.enrollment_id
+GROUP BY
+    d.department_id,
+    d.name;
+-- 31 Retrieve the list of courses where the number of enrolled students exceeds the capacity of the classroom.
+
+   SELECT
+    c.course_id,
+    c.name AS course_name,
+    c.capacity AS classroom_capacity,
+    COUNT(e.student_id) AS num_students_enrolled
+FROM
+    courses c
+JOIN enrollments e ON
+    c.course_id = e.course_id
+GROUP BY
+    c.course_id,
+    c.name,
+    c.capacity
+HAVING
+    COUNT(e.student_id) > c.capacity;
+-- 32 Find the department with the lowest average GPA.
+SELECT
+    s.department_id,
+    d.name AS department_name,
+    AVG(
+        CASE WHEN g.grade_value = 'A' THEN 4.0 WHEN g.grade_value = 'B' THEN 3.0 WHEN g.grade_value = 'C' THEN 2.0 WHEN g.grade_value = 'D' THEN 1.0 ELSE 0.0
+    END
+) AS average_gpa
+FROM
+    students s
+JOIN
+    enrollments e ON s.student_id = e.student_id
+JOIN
+    grades g ON e.enrollment_id = g.enrollment_id
+JOIN
+    departments d ON s.department_id = d.department_id
+GROUP BY
+    s.department_id, d.name
+ORDER BY
+    average_gpa
+LIMIT 1;
+    
+-- 33 List all courses with their prerequisites.
+-- need to add prerequisites table
+-- 34 Calculate the total number of credits offered by each department.
+SELECT
+    d.department_id,
+    d.name AS department_name,
+    SUM(c.credits) AS total_credits
+FROM
+    courses c
+JOIN
+    departments d ON c.department_id = d.department_id
+GROUP BY
+    d.department_id, d.name;
+
+-- 35 Retrieve the list of students who have changed their major.
+-- need to add previous department
+-- 36 Find the course with the highest percentage of students who received an A grade.
+SELECT
+    c.course_id,
+    c.name AS course_name,
+    COUNT(
+        CASE WHEN g.grade_value = 'A' THEN 1
+    END
+) / COUNT(g.grade_id) AS percentage_a_grade
+FROM
+    courses c
+JOIN assignments a ON
+    c.course_id = a.course_id
+LEFT JOIN grades g ON
+    a.assignment_id = g.assignment_id
+GROUP BY
+    c.course_id,
+    c.name
+ORDER BY
+    percentage_a_grade
+DESC
+LIMIT 1;
+-- 37 List all campus facilities with their respective event schedules.
+SELECT
+    f.facility_id,
+    f.name AS facility_name,
+    e.event_id,
+    e.name AS event_name,
+    e.date AS event_date
+FROM
+    campus_facilities f
+LEFT JOIN campus_events e ON
+    f.location = e.location
+ORDER BY
+    f.facility_id,
+    e.date;
+-- 38 Calculate the average GPA for male and female students separately.
+-- need to add gender
+-- 39 Retrieve the list of courses where the average grade is below a certain threshold.
+SELECT
+    c.course_id,
+    c.name AS course_name,
+    AVG(
+        CASE WHEN g.grade_value = 'A' THEN 4.0 WHEN g.grade_value = 'B' THEN 3.0 WHEN g.grade_value = 'C' THEN 2.0 WHEN g.grade_value = 'D' THEN 1.0 ELSE 0.0
+    END
+) AS average_grade
+FROM
+    courses c
+JOIN assignments a ON
+    c.course_id = a.course_id
+JOIN grades g ON
+    a.assignment_id = g.assignment_id
+GROUP BY
+    c.course_id,
+    c.name
+HAVING
+    AVG(
+        CASE WHEN g.grade_value = 'A' THEN 4.0 WHEN g.grade_value = 'B' THEN 3.0 WHEN g.grade_value = 'C' THEN 2.0 WHEN g.grade_value = 'D' THEN 1.0 ELSE 0.0
+    END
+) < 4;
+-- 40 Find the instructor who has the highest percentage of students receiving A grades in their courses. 
+SELECT
+    i.instructor_id,
+    i.name AS instructor_name,
+    d.name AS department_name,
+    COUNT(
+        CASE WHEN g.grade_value = 'A' THEN 1
+    END
+) / COUNT(DISTINCT e.student_id) AS percentage_a_grades
+FROM
+    instructors i
+JOIN departments d ON
+    i.department_id = d.department_id
+JOIN courses c ON
+    d.department_id = c.department_id
+JOIN assignments a ON
+    c.course_id = a.course_id
+JOIN enrollments e ON
+    a.course_id = e.course_id
+JOIN grades g ON
+    e.enrollment_id = g.enrollment_id
+GROUP BY
+    i.instructor_id,
+    i.name,
+    d.name
+ORDER BY
+    percentage_a_grades
+DESC
+LIMIT 1;
+--41 List all assignments along with their submission deadlines.
+SELECT
+    a.assignment_id,
+    a.name AS assignment_name,
+    a.due_date,
+    c.name AS course_name
+FROM
+    assignments a
+JOIN courses c ON
+    a.course_id = c.course_id;       
 
       
 

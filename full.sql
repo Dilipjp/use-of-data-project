@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2024 at 07:08 PM
+-- Generation Time: Mar 29, 2024 at 06:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -169,6 +169,7 @@ CREATE TABLE `courses` (
   `name` varchar(255) NOT NULL,
   `credits` int(11) DEFAULT NULL,
   `semester` varchar(11) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -176,22 +177,22 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`course_id`, `name`, `credits`, `semester`, `department_id`) VALUES
-(1, 'Math 101', 3, 'Spring 2023', 1),
-(2, 'History 101', 4, 'Summer 2023', 2),
-(3, 'PROGRAMMING AND ARCHITECTURE', 3, 'Spring 2023', 3),
-(4, 'English Literature 101', 3, 'Fall 2023', 4),
-(5, 'Physics 101', 4, 'Summer 2023', 5),
-(6, 'Chemistry 101', 3, 'Spring 2023', 6),
-(7, 'Biology 101', 4, 'Winter 2023', 7),
-(8, 'Art 101', 3, 'Fall 2023', 8),
-(9, 'Music 101', 3, 'Spring 2023', 9),
-(10, 'Economics 101', 4, 'Winter 2023', 10),
-(11, 'Psychology 101', 3, 'Summer 2023', 11),
-(12, 'Sociology 101', 4, 'Spring 2023', 12),
-(13, 'Political Science 101', 3, 'Fall 2023', 13),
-(14, 'Geography 101', 3, 'Summer 2023', 14),
-(15, 'Physical Education 101', 4, 'Spring 2023', 15);
+INSERT INTO `courses` (`course_id`, `name`, `credits`, `semester`, `capacity`, `department_id`) VALUES
+(1, 'Math 101', 3, 'Spring 2023', 0, 1),
+(2, 'History 101', 4, 'Summer 2023', 20, 2),
+(3, 'PROGRAMMING AND ARCHITECTURE', 3, 'Spring 2023', 30, 3),
+(4, 'English Literature 101', 3, 'Fall 2023', 100, 4),
+(5, 'Physics 101', 4, 'Summer 2023', 200, 5),
+(6, 'Chemistry 101', 3, 'Spring 2023', 40, 6),
+(7, 'Biology 101', 4, 'Winter 2023', 150, 7),
+(8, 'Art 101', 3, 'Fall 2023', 200, 8),
+(9, 'Music 101', 3, 'Spring 2023', 100, 9),
+(10, 'Economics 101', 4, 'Winter 2023', 75, 10),
+(11, 'Psychology 101', 3, 'Summer 2023', 80, 11),
+(12, 'Sociology 101', 4, 'Spring 2023', 40, 12),
+(13, 'Political Science 101', 3, 'Fall 2023', 30, 13),
+(14, 'Geography 101', 3, 'Summer 2023', 60, 14),
+(15, 'Physical Education 101', 4, 'Spring 2023', 100, 15);
 
 -- --------------------------------------------------------
 
