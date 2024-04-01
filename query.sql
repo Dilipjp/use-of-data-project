@@ -8,7 +8,7 @@ CREATE TABLE campus_events (
     event_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     date DATE,
-    location VARCHAR(255)
+    location VARCHAR(255),
     attendance INT
 );
 CREATE TABLE instructors (
@@ -36,6 +36,7 @@ CREATE TABLE academic_advisors (
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
+    prerequisite VARCHAR(255),
     credits INT,
     semester VARCHAR(255),
     capacity INT,
@@ -47,10 +48,13 @@ CREATE TABLE students (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     dob DATE,
+    gender VARCHAR(255),
     class_level VARCHAR(255),
     department_id INT,
+    previous_department_id INT,
     advisor_id INT,
     FOREIGN KEY (department_id) REFERENCES departments(department_id),
+    FOREIGN KEY (previous_department_id) REFERENCES departments(department_id),
     FOREIGN KEY (advisor_id) REFERENCES academic_advisors(advisor_id)
 );
 CREATE TABLE enrollments (
@@ -104,38 +108,38 @@ INSERT INTO campus_facilities (name, capacity, location) VALUES
 
 
 INSERT INTO campus_events (name, date, location, attendance) VALUES
-('Welcome Party', '2023-09-10', 'Student Union Building', 75),
-('Career Fair', '2023-10-05', 'Main Campus Lawn', 100),
-('Alumni Reunion', '2023-11-20', 'Alumni Hall', 150),
+('Welcome Party', '2024-09-10', 'Student Union Building', 75),
+('Career Fair', '2024-10-05', 'Main Campus Lawn', 100),
+('Alumni Reunion', '2024-11-20', 'Alumni Hall', 150),
 ('Spring Festival', '2024-04-15', 'Recreation Center', 60),
 ('Academic Conference', '2024-05-10', 'Science Building', 50),
-('Art Exhibition', '2023-10-05', 'Art Building', 750),
-('Music Concert', '2023-11-05', 'Music Hall', 100),
+('Art Exhibition', '2024-10-05', 'Art Building', 750),
+('Music Concert', '2024-11-05', 'Music Hall', 100),
 ('Economics Symposium', '2024-02-15', 'Economics Building', 25),
 ('Psychology Workshop', '2024-03-10', 'Psychology Building', 10),
-('Sociology Conference', '2023-10-05', 'Sociology Building', 40),
+('Sociology Conference', '2024-10-05', 'Sociology Building', 40),
 ('Political Science Debate', '2024-05-20', 'Political Science Building', 7),
-('Geography Field Trip', '2023-10-15', 'Various Locations', 100),
+('Geography Field Trip', '2024-10-15', 'Various Locations', 100),
 ('Physical Education Tournament', '2024-03-20', 'Recreation Center', 30),
-('Chess Competition', '2023-10-05', 'Student Union Building', 5),
-('Dance Performance', '2023-11-15', 'Performing Arts Center', 125);
+('Chess Competition', '2024-10-05', 'Student Union Building', 5),
+('Dance Performance', '2024-11-15', 'Performing Arts Center', 125);
 
 INSERT INTO instructors (name, email, department_id) VALUES
-('Dr. White', 'drwhite@example.com', 1),
-('Prof. Brown', 'profbrown@example.com', 2),
-('Ms. Green', 'msgreen@example.com', 3),
-('Dr. Black', 'drblack@example.com', 1),
-('Prof. Gray', 'profgray@example.com', 2),
-('Dr. Davis', 'drdavis@example.com', 3),
-('Prof. Martinez', 'profmartinez@example.com', 1),
-('Ms. Thomas', 'msthomas@example.com', 2),
-('Dr. Garcia', 'drgarcia@example.com', 3),
-('Prof. Rodriguez', 'profrodriguez@example.com', 1),
-('Ms. Hernandez', 'mshernandez@example.com', 2),
-('Dr. King', 'drking@example.com', 3),
-('Prof. Adams', 'profadams@example.com', 1),
-('Ms. Campbell', 'mscampbell@example.com', 2),
-('Dr. Wilson', 'drwilson@example.com', 3);
+('Dr. White', 'drwhite@gmail.com', 1),
+('Prof. Brown', 'profbrown@gmail.com', 2),
+('Ms. Silviya Paskaleva', 'silvia@gmail.com', 3),
+('Dr. Black', 'drblack@gmail.com', 1),
+('Prof. Gray', 'profgray@gmail.com', 2),
+('Ms. Pargol Poshtare', 'pargol@gmail.com', 3),
+('Prof. Martinez', 'profmartinez@gmail.com', 1),
+('Ms. Thomas', 'msthomas@gmail.com', 2),
+('Dr. Garcia', 'drgarcia@gmail.com', 3),
+('Prof. Rodriguez', 'profrodriguez@gmail.com', 1),
+('Ms. Hernandez', 'mshernandez@gmail.com', 2),
+('Dr. King', 'drking@gmail.com', 3),
+('Prof. Adams', 'profadams@gmail.com', 1),
+('Ms. Campbell', 'mscampbell@gmail.com', 2),
+('Dr. Wilson', 'drwilson@gmail.com', 3);
 
 INSERT INTO departments (name, head_of_department_id) VALUES
 ('Mathematics', 1),
@@ -154,97 +158,99 @@ INSERT INTO departments (name, head_of_department_id) VALUES
 ('Art', 14),
 ('Music', 15);
 
-INSERT INTO courses (name, credits, semester, capacity, department_id) VALUES
-('Math 101', 3,'Spring 2023', 1, 1),
-('History 101', 4, 'Fall 2023', 20, 2),
-('Computer Science 101', 3, 'Winter 2023', 30, 3),
-('English Literature 101', 3,'Spring 2023', 45, 4),
-('Physics 101', 4, 'Summer 2023', 40, 5),
-('Chemistry 101', 3, 'Fall 2023', 30, 6),
-('Biology 101', 4, 'Winter 2023', 20, 7),
-('Art 101', 3, 'Fall 2023', 25, 8),
-('Music 101', 3,'Spring 2023', 100, 9),
-('Economics 101', 4, 'Winter 2023', 60, 10),
-('Psychology 101', 3, 'Fall 2023', 100, 11),
-('Sociology 101', 4, 'Summer 2023', 200, 12),
-('Political Science 101', 3, 'Spring 2023', 25, 13),
-('Geography 101', 3, 'Fall 2023', 150, 14),
-('Physical Education 101', 4, 'Winter 2023', 200, 15);
+INSERT INTO courses (name, prerequisite, credits, semester, capacity, department_id) VALUES
+('Math 101', 'Math 100', 3, 'Spring 2023', 0, 1),
+('History 101', 'History 100', 4, 'Fall 2023', 20, 2),
+('Computer Science 101', 'Computer Science 100', 3, 'Winter 2023', 30, 3),
+('English Literature 101', 'English Literature 100', 3, 'Spring 2023', 45, 7),
+('Physics 101', 'Physics 100', 4, 'Summer 2023', 40, 4),
+('Chemistry 101', 'Chemistry 100', 3, 'Fall 2023', 30, 5),
+('Biology 101', 'Biology 100', 4, 'Winter 2023', 20, 6),
+('Art 101', 'Art 100', 3, 'Fall 2023', 25, 14),
+('Music 101', 'Music 100', 3, 'Spring 2023', 100, 15),
+('Economics 101', 'Economics 100', 4, 'Winter 2023', 60, 8),
+('Psychology 101', 'Psychology 100', 3, 'Fall 2023', 100, 9),
+('Sociology 101', 'Sociology 100', 4, 'Summer 2023', 200, 10),
+('Political Science 101', 'Political Science 100', 3, 'Spring 2023', 25, 11),
+('Geography 101', 'Geography 100', 3, 'Fall 2023', 150, 12),
+('Physical Education 101', 'Physical Education 100', 4, 'Winter 2023', 200, 13);
+
+
 
 INSERT INTO academic_advisors (name, email, department_id) VALUES
-('Dr. White', 'drwhite@example.com', 1),
-('Prof. Brown', 'profbrown@example.com', 2),
-('Ms. Green', 'msgreen@example.com', 3),
-('Dr. Black', 'drblack@example.com', 1),
-('Prof. Gray', 'profgray@example.com', 2),
-('Dr. Davis', 'drdavis@example.com', 3),
-('Prof. Martinez', 'profmartinez@example.com', 1),
-('Ms. Thomas', 'msthomas@example.com', 2),
-('Dr. Garcia', 'drgarcia@example.com', 3),
-('Prof. Rodriguez', 'profrodriguez@example.com', 1),
-('Ms. Hernandez', 'mshernandez@example.com', 2),
-('Dr. King', 'drking@example.com', 3),
-('Prof. Adams', 'profadams@example.com', 1),
-('Ms. Campbell', 'mscampbell@example.com', 2),
-('Dr. Wilson', 'drwilson@example.com', 3);
+('Dr. White', 'drwhite@gmail.com', 1),
+('Prof. Brown', 'profbrown@gmail.com', 2),
+('Ms. Green', 'msgreen@gmail.com', 3),
+('Dr. Black', 'drblack@gmail.com', 1),
+('Prof. Gray', 'profgray@gmail.com', 2),
+('Dr. Davis', 'drdavis@gmail.com', 3),
+('Prof. Martinez', 'profmartinez@gmail.com', 1),
+('Ms. Thomas', 'msthomas@gmail.com', 2),
+('Dr. Garcia', 'drgarcia@gmail.com', 3),
+('Prof. Rodriguez', 'profrodriguez@gmail.com', 1),
+('Ms. Hernandez', 'mshernandez@gmail.com', 2),
+('Dr. King', 'drking@gmail.com', 3),
+('Prof. Adams', 'profadams@gmail.com', 1),
+('Ms. Campbell', 'mscampbell@gmail.com', 2),
+('Dr. Wilson', 'drwilson@gmail.com', 3);
 
-INSERT INTO students (name, email, dob, class_level, department_id, advisor_id) VALUES
-('Dilip Kumara', 'dilip@example.com', '2000-01-01', 'senior', 1, 1),
-('Muththu', 'muththu@example.com', '2000-02-01', 'freshman',2, 2),
-('Shawani', 'shawani@example.com', '2000-03-01', 'junior', 3, 3),
-('Suman', 'suman@example.com', '2000-04-01', 'freshman', 4, 4),
-('Mahee', 'mahee@example.com', '2000-05-01', 'senior', 5, 5),
-('Subash', 'subash@example.com', '2000-06-01', 'freshman', 6, 6),
-('Fedric', 'fedric@example.com', '2000-07-01', 'junior', 7, 7),
-('Erica', 'erika@example.com', '2000-08-01', 'sophomores', 8, 8),
-('Osmari', 'osmary@example.com', '2000-09-01', 'senior', 9, 9),
-('Barsha', 'barsha@example.com', '2000-10-01', 'freshman', 10, 10),
-('Kurpa', 'kurpa@example.com', '2000-11-01', 'senior', 11, 11),
-('Mothit', 'mothit@example.com', '2000-12-01', 'sophomores', 12, 12),
-('Nabeel', 'nabeel@example.com', '2001-01-01', 'senior', 13, 13),
-('Rithika', 'rithika@example.com', '2001-02-01', 'freshman', 14, 14),
-('Shing', 'singh@example.com', '2001-03-01', 'sophomores', 15, 15);
+INSERT INTO students (name, email, dob, gender, class_level, department_id, previous_department_id, advisor_id) VALUES
+('Dilip Kumara', 'dilip@gmail.com', '2000-01-01','M', 'senior', 1, 1, 1),
+('Suhas', 'suhas@gmail.com', '2000-02-01','M', 'freshman',2, 2, 2),
+('Shawani', 'shawani@gmail.com', '2000-03-01','F', 'junior', 3, 3, 3),
+('Suman', 'suman@gmail.com', '2000-04-01','F', 'freshman', 4, 3, 4),
+('Mahee', 'mahee@gmail.com', '2000-05-01','F', 'senior', 5, 5, 5),
+('Subash', 'subash@gmail.com', '2000-06-01','M', 'freshman', 6, 6, 6),
+('Fedric', 'fedric@gmail.com', '2000-07-01','M', 'junior', 7, 7,7),
+('Erica', 'erika@gmail.com', '2000-08-01','F', 'sophomores', 8,6, 8),
+('Osmari', 'osmary@gmail.com', '2000-09-01','F', 'senior', 9, 9,9),
+('Barsha', 'barsha@gmail.com', '2000-10-01','F', 'freshman', 10,10, 10),
+('Kurpa', 'kurpa@gmail.com', '2000-11-01','F', 'senior', 11,11, 11),
+('Mothit', 'mothit@gmail.com', '2000-12-01','M', 'sophomores', 12,12, 12),
+('Nabeel', 'nabeel@gmail.com', '2001-01-01','M', 'senior', 13, 1,13),
+('Rithika', 'rithika@gmail.com', '2001-02-01','F', 'freshman', 14,14, 14),
+('Shing', 'singh@gmail.com', '2001-03-01','M', 'sophomores', 15, 15,15);
 
 
 INSERT INTO enrollments (student_id, course_id, enrollment_date) VALUES
-(1, 1, '2023-09-01'),
-(2, 2, '2023-09-02'),
-(3, 3, '2023-09-03'),
-(4, 4, '2023-09-04'),
-(5, 5, '2023-09-05'),
-(6, 6, '2023-09-06'),
-(7, 7, '2023-09-07'),
-(8, 8, '2023-09-08'),
-(9, 9, '2023-09-09'),
-(10, 10, '2023-09-10'),
-(11, 11, '2023-09-11'),
-(12, 12, '2023-09-12'),
-(13, 13, '2023-09-13'),
-(14, 14, '2023-09-14'),
-(15, 15, '2023-09-15');
+(1, 1, '2024-09-01'),
+(1, 2, '2024-09-02'),
+(3, 2, '2024-09-03'),
+(4, 4, '2024-09-04'),
+(5, 5, '2024-09-05'),
+(6, 6, '2024-09-06'),
+(7, 7, '2024-09-07'),
+(8, 8, '2024-09-08'),
+(9, 9, '2024-09-09'),
+(10, 10, '2024-09-10'),
+(11, 11, '2024-09-11'),
+(12, 12, '2024-09-12'),
+(13, 13, '2024-09-13'),
+(14, 14, '2024-09-14'),
+(15, 15, '2024-09-15');
 
 
 
 INSERT INTO assignments (course_id, name, due_date) VALUES
-(1, 'Assignment 1', '2023-09-20'),
-(2, 'Assignment 2', '2023-09-21'),
-(3, 'Assignment 3', '2023-09-22'),
-(4, 'Assignment 4', '2023-09-23'),
-(5, 'Assignment 5', '2023-09-24'),
-(6, 'Assignment 6', '2023-09-25'),
-(7, 'Assignment 7', '2023-09-26'),
-(8, 'Assignment 8', '2023-09-27'),
-(9, 'Assignment 9', '2023-09-28'),
-(10, 'Assignment 10', '2023-09-29'),
-(11, 'Assignment 11', '2023-09-30'),
-(12, 'Assignment 12', '2023-10-01'),
-(13, 'Assignment 13', '2023-10-02'),
-(14, 'Assignment 14', '2023-10-03'),
-(15, 'Assignment 15', '2023-10-04');
+(1, 'Assignment 1', '2024-09-20'),
+(2, 'Assignment 2', '2024-09-21'),
+(3, 'Assignment 3', '2024-09-22'),
+(4, 'Assignment 4', '2024-09-23'),
+(5, 'Assignment 5', '2024-09-24'),
+(6, 'Assignment 6', '2024-09-25'),
+(7, 'Assignment 7', '2024-09-26'),
+(8, 'Assignment 8', '2024-09-27'),
+(9, 'Assignment 9', '2024-09-28'),
+(10, 'Assignment 10', '2024-09-29'),
+(11, 'Assignment 11', '2024-09-30'),
+(12, 'Assignment 12', '2024-10-01'),
+(13, 'Assignment 13', '2024-10-02'),
+(14, 'Assignment 14', '2024-10-03'),
+(15, 'Assignment 15', '2024-10-04');
 
 INSERT INTO grades (enrollment_id, assignment_id, grade_value) VALUES
 (1, 1, 'A'),
-(2, 2, 'B'),
+(2, 1, NULL),
 (3, 3, 'A'),
 (4, 4, 'B'),
 (5, 5, 'A'),
@@ -265,7 +271,7 @@ VALUES
     (2, 1),
     (3, 2),
     (4, 2),
-    (5, 3),
+    (5, NULL),
     (6, 3),
     (7, 4),
     (8, 4),
@@ -333,7 +339,7 @@ SELECT NAME AS
 FROM
     courses
 WHERE
-    semester = 'Spring 2023';
+    semester = 'Spring 2024';
 
 -- 05 Find the top 5 students with the highest GPA.
 SELECT
@@ -408,19 +414,16 @@ ORDER BY
 
 -- 12 Retrieve the list of students who have not enrolled in any courses.
 SELECT
-    s.student_id,
-    s.name AS student_name
+    s.name,
+    s.email,
+    s.gender,
+    s.class_level
 FROM
     students s
-WHERE NOT
-    EXISTS(
-    SELECT
-        1
-    FROM
-        enrollments e
-    WHERE
-        s.student_id = e.student_id
-);
+LEFT JOIN enrollments e ON
+    e.student_id = s.student_id
+WHERE
+    e.student_id IS NULL;
 
 -- 13 List all courses that have no enrolled students.
 SELECT
@@ -479,12 +482,10 @@ FROM
     students s
 JOIN enrollments e ON
     s.student_id = e.student_id
-JOIN courses c ON
-    e.course_id = c.course_id
 LEFT JOIN grades g ON
-    e.enrollment_id = g.enrollment_id AND g.assignment_id = 1
+    e.enrollment_id = g.enrollment_id
 WHERE
-    g.grade_id IS NULL AND c.course_id = 1;
+    g.grade_value IS NULL AND g.assignment_id = 1;
 -- 17  List all instructors who have taught courses in multiple departments.
 SELECT
     i.name AS instructor_name
@@ -721,7 +722,11 @@ ORDER BY
 LIMIT 1;
     
 -- 33 List all courses with their prerequisites.
--- need to add prerequisites table
+SELECT name AS
+    course_name,
+    prerequisite
+FROM
+    courses;
 -- 34 Calculate the total number of credits offered by each department.
 SELECT
     d.department_id,
@@ -735,7 +740,20 @@ GROUP BY
     d.department_id, d.name;
 
 -- 35 Retrieve the list of students who have changed their major.
--- need to add previous department
+SELECT
+    s.student_id,
+    s.name AS student_name,
+    s.email AS student_email,
+    d1.name AS previous_department,
+    d2.name AS current_department
+FROM
+    students s
+JOIN departments d1 ON
+    s.previous_department_id = d1.department_id
+JOIN departments d2 ON
+    s.department_id = d2.department_id
+WHERE
+    s.previous_department_id IS NOT NULL AND s.department_id != s.previous_department_id;
 -- 36 Find the course with the highest percentage of students who received an A grade.
 SELECT
     c.course_id,
@@ -772,7 +790,20 @@ ORDER BY
     f.facility_id,
     e.date;
 -- 38 Calculate the average GPA for male and female students separately.
--- need to add gender
+SELECT
+    s.gender,
+    AVG(
+        CASE WHEN g.grade_value = 'A' THEN 4 WHEN g.grade_value = 'B' THEN 3 WHEN g.grade_value = 'C' THEN 2 WHEN g.grade_value = 'D' THEN 1 ELSE 0
+    END
+) AS average_gpa
+FROM
+    students s
+JOIN enrollments e ON
+    s.student_id = e.student_id
+JOIN grades g ON
+    e.enrollment_id = g.enrollment_id
+GROUP BY
+    s.gender;
 -- 39 Retrieve the list of courses where the average grade is below a certain threshold.
 SELECT
     c.course_id,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 29, 2024 at 06:54 PM
+-- Generation Time: Apr 01, 2024 at 10:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -39,21 +39,21 @@ CREATE TABLE `academic_advisors` (
 --
 
 INSERT INTO `academic_advisors` (`advisor_id`, `name`, `email`, `department_id`) VALUES
-(1, 'Dr. White', 'drwhite@example.com', 1),
-(2, 'Prof. Brown', 'profbrown@example.com', 2),
-(3, 'Ms. Green', 'msgreen@example.com', 3),
-(4, 'Dr. Black', 'drblack@example.com', 1),
-(5, 'Prof. Gray', 'profgray@example.com', 2),
-(6, 'Dr. Davis', 'drdavis@example.com', 3),
-(7, 'Prof. Martinez', 'profmartinez@example.com', 1),
-(8, 'Ms. Thomas', 'msthomas@example.com', 2),
-(9, 'Dr. Garcia', 'drgarcia@example.com', 3),
-(10, 'Prof. Rodriguez', 'profrodriguez@example.com', 1),
-(11, 'Ms. Hernandez', 'mshernandez@example.com', 2),
-(12, 'Dr. King', 'drking@example.com', 3),
-(13, 'Prof. Adams', 'profadams@example.com', 1),
-(14, 'Ms. Campbell', 'mscampbell@example.com', 2),
-(15, 'Dr. Wilson', 'drwilson@example.com', 3);
+(1, 'Dr. White', 'drwhite@gmail.com', 1),
+(2, 'Prof. Brown', 'profbrown@gmail.com', 2),
+(3, 'Ms. Green', 'msgreen@gmail.com', 3),
+(4, 'Dr. Black', 'drblack@gmail.com', 1),
+(5, 'Prof. Gray', 'profgray@gmail.com', 2),
+(6, 'Dr. Davis', 'drdavis@gmail.com', 3),
+(7, 'Prof. Martinez', 'profmartinez@gmail.com', 1),
+(8, 'Ms. Thomas', 'msthomas@gmail.com', 2),
+(9, 'Dr. Garcia', 'drgarcia@gmail.com', 3),
+(10, 'Prof. Rodriguez', 'profrodriguez@gmail.com', 1),
+(11, 'Ms. Hernandez', 'mshernandez@gmail.com', 2),
+(12, 'Dr. King', 'drking@gmail.com', 3),
+(13, 'Prof. Adams', 'profadams@gmail.com', 1),
+(14, 'Ms. Campbell', 'mscampbell@gmail.com', 2),
+(15, 'Dr. Wilson', 'drwilson@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -73,21 +73,21 @@ CREATE TABLE `assignments` (
 --
 
 INSERT INTO `assignments` (`assignment_id`, `course_id`, `name`, `due_date`) VALUES
-(1, 1, 'Assignment 1', '2023-09-20'),
-(2, 2, 'Assignment 2', '2023-09-21'),
-(3, 3, 'Assignment 3', '2023-09-22'),
-(4, 4, 'Assignment 4', '2023-09-23'),
-(5, 5, 'Assignment 5', '2023-09-24'),
-(6, 6, 'Assignment 6', '2023-09-25'),
-(7, 7, 'Assignment 7', '2023-09-26'),
-(8, 8, 'Assignment 8', '2023-09-27'),
-(9, 9, 'Assignment 9', '2023-09-28'),
-(10, 10, 'Assignment 10', '2023-09-29'),
-(11, 11, 'Assignment 11', '2023-09-30'),
-(12, 12, 'Assignment 12', '2023-10-01'),
-(13, 13, 'Assignment 13', '2023-10-02'),
-(14, 14, 'Assignment 14', '2023-10-03'),
-(15, 15, 'Assignment 15', '2023-10-04');
+(1, 1, 'Assignment 1', '2024-09-20'),
+(2, 2, 'Assignment 2', '2024-09-21'),
+(3, 3, 'Assignment 3', '2024-09-22'),
+(4, 4, 'Assignment 4', '2024-09-23'),
+(5, 5, 'Assignment 5', '2024-09-24'),
+(6, 6, 'Assignment 6', '2024-09-25'),
+(7, 7, 'Assignment 7', '2024-09-26'),
+(8, 8, 'Assignment 8', '2024-09-27'),
+(9, 9, 'Assignment 9', '2024-09-28'),
+(10, 10, 'Assignment 10', '2024-09-29'),
+(11, 11, 'Assignment 11', '2024-09-30'),
+(12, 12, 'Assignment 12', '2024-10-01'),
+(13, 13, 'Assignment 13', '2024-10-02'),
+(14, 14, 'Assignment 14', '2024-10-03'),
+(15, 15, 'Assignment 15', '2024-10-04');
 
 -- --------------------------------------------------------
 
@@ -108,21 +108,21 @@ CREATE TABLE `campus_events` (
 --
 
 INSERT INTO `campus_events` (`event_id`, `name`, `date`, `location`, `attendance`) VALUES
-(1, 'Welcome Party', '2023-09-10', 'Student Union Building', 100),
-(2, 'Career Fair', '2023-10-05', 'Main Campus Lawn', 40),
-(3, 'Alumni Reunion', '2023-11-20', 'Alumni Hall', 30),
-(4, 'Spring Festival', '2024-04-15', 'Recreation Center', 50),
-(5, 'Academic Conference', '2024-05-10', 'Science Building', 90),
-(6, 'Art Exhibition', '2023-10-20', 'Art Building', 30),
-(7, 'Music Concert', '2023-11-05', 'Music Hall', 120),
-(8, 'Economics Symposium', '2024-02-15', 'Economics Building', 20),
-(9, 'Psychology Workshop', '2023-10-05', 'Psychology Building', 30),
-(10, 'Sociology Conference', '2024-04-25', 'Sociology Building', 40),
-(11, 'Political Science Debate', '2024-05-20', 'Political Science Building', 30),
-(12, 'Geography Field Trip', '2023-10-15', 'Various Locations', 40),
-(13, 'Physical Education Tournament', '2024-03-20', 'Recreation Center', 120),
-(14, 'Chess Competition', '2023-10-05', 'Student Union Building', 200),
-(15, 'Dance Performance', '2023-11-15', 'Performing Arts Center', 20);
+(1, 'Welcome Party', '2024-09-10', 'Student Union Building', 75),
+(2, 'Career Fair', '2024-10-05', 'Main Campus Lawn', 100),
+(3, 'Alumni Reunion', '2024-11-20', 'Alumni Hall', 150),
+(4, 'Spring Festival', '2024-04-15', 'Recreation Center', 60),
+(5, 'Academic Conference', '2024-05-10', 'Science Building', 50),
+(6, 'Art Exhibition', '2024-10-05', 'Art Building', 750),
+(7, 'Music Concert', '2024-11-05', 'Music Hall', 100),
+(8, 'Economics Symposium', '2024-02-15', 'Economics Building', 25),
+(9, 'Psychology Workshop', '2024-03-10', 'Psychology Building', 10),
+(10, 'Sociology Conference', '2024-10-05', 'Sociology Building', 40),
+(11, 'Political Science Debate', '2024-05-20', 'Political Science Building', 7),
+(12, 'Geography Field Trip', '2024-10-15', 'Various Locations', 100),
+(13, 'Physical Education Tournament', '2024-03-20', 'Recreation Center', 30),
+(14, 'Chess Competition', '2024-10-05', 'Student Union Building', 5),
+(15, 'Dance Performance', '2024-11-15', 'Performing Arts Center', 125);
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ INSERT INTO `campus_events` (`event_id`, `name`, `date`, `location`, `attendance
 CREATE TABLE `campus_facilities` (
   `facility_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `capacity` int(11) NOT NULL,
+  `capacity` int(11) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -142,21 +142,21 @@ CREATE TABLE `campus_facilities` (
 --
 
 INSERT INTO `campus_facilities` (`facility_id`, `name`, `capacity`, `location`) VALUES
-(1, 'Library', 100, 'Main Building, Floor 2'),
-(2, 'Gymnasium', 75, 'Recreation Center'),
-(3, 'Computer Lab', 100, 'Science Building, Room 101'),
+(1, 'Library', 200, 'Main Building, Floor 2'),
+(2, 'Gymnasium', 100, 'Recreation Center'),
+(3, 'Computer Lab', 400, 'Science Building, Room 101'),
 (4, 'Cafeteria', 200, 'Student Union Building'),
-(5, 'Auditorium', 300, 'Performing Arts Center'),
-(6, 'Football Field', 350, 'Campus Stadium'),
+(5, 'Auditorium', 200, 'Performing Arts Center'),
+(6, 'Football Field', 300, 'Campus Stadium'),
 (7, 'Swimming Pool', 30, 'Recreation Center'),
-(8, 'Art Studio', 15, 'Art Building, Room 102'),
+(8, 'Art Studio', 10, 'Art Building, Room 102'),
 (9, 'Music Hall', 100, 'Music Building, Room 201'),
-(10, 'Economics Lab', 60, 'Economics Building, Room 103'),
+(10, 'Economics Lab', 15, 'Economics Building, Room 103'),
 (11, 'Psychology Research Center', 50, 'Psychology Building, Room 301'),
-(12, 'Sociology Seminar Room', 20, 'Sociology Building, Room 202'),
-(13, 'Political Science Lecture Hall', 15, 'Political Science Building, Room 101'),
-(14, 'Geography Classroom', 50, 'Geography Building, Room 301'),
-(15, 'Fitness Center', 100, 'Recreation Center');
+(12, 'Sociology Seminar Room', 300, 'Sociology Building, Room 202'),
+(13, 'Political Science Lecture Hall', 100, 'Political Science Building, Room 101'),
+(14, 'Geography Classroom', 40, 'Geography Building, Room 301'),
+(15, 'Fitness Center', 150, 'Recreation Center');
 
 -- --------------------------------------------------------
 
@@ -167,8 +167,9 @@ INSERT INTO `campus_facilities` (`facility_id`, `name`, `capacity`, `location`) 
 CREATE TABLE `courses` (
   `course_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `prerequisite` varchar(255) DEFAULT NULL,
   `credits` int(11) DEFAULT NULL,
-  `semester` varchar(11) DEFAULT NULL,
+  `semester` varchar(255) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -177,22 +178,22 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`course_id`, `name`, `credits`, `semester`, `capacity`, `department_id`) VALUES
-(1, 'Math 101', 3, 'Spring 2023', 0, 1),
-(2, 'History 101', 4, 'Summer 2023', 20, 2),
-(3, 'PROGRAMMING AND ARCHITECTURE', 3, 'Spring 2023', 30, 3),
-(4, 'English Literature 101', 3, 'Fall 2023', 100, 4),
-(5, 'Physics 101', 4, 'Summer 2023', 200, 5),
-(6, 'Chemistry 101', 3, 'Spring 2023', 40, 6),
-(7, 'Biology 101', 4, 'Winter 2023', 150, 7),
-(8, 'Art 101', 3, 'Fall 2023', 200, 8),
-(9, 'Music 101', 3, 'Spring 2023', 100, 9),
-(10, 'Economics 101', 4, 'Winter 2023', 75, 10),
-(11, 'Psychology 101', 3, 'Summer 2023', 80, 11),
-(12, 'Sociology 101', 4, 'Spring 2023', 40, 12),
-(13, 'Political Science 101', 3, 'Fall 2023', 30, 13),
-(14, 'Geography 101', 3, 'Summer 2023', 60, 14),
-(15, 'Physical Education 101', 4, 'Spring 2023', 100, 15);
+INSERT INTO `courses` (`course_id`, `name`, `prerequisite`, `credits`, `semester`, `capacity`, `department_id`) VALUES
+(1, 'Math 101', 'Math 100', 3, 'Spring 2023', 0, 1),
+(2, 'History 101', 'History 100', 4, 'Fall 2023', 20, 2),
+(3, 'Computer Science 101', 'Computer Science 100', 3, 'Winter 2023', 30, 3),
+(4, 'English Literature 101', 'English Literature 100', 3, 'Spring 2023', 45, 7),
+(5, 'Physics 101', 'Physics 100', 4, 'Summer 2023', 40, 4),
+(6, 'Chemistry 101', 'Chemistry 100', 3, 'Fall 2023', 30, 5),
+(7, 'Biology 101', 'Biology 100', 4, 'Winter 2023', 20, 6),
+(8, 'Art 101', 'Art 100', 3, 'Fall 2023', 25, 14),
+(9, 'Music 101', 'Music 100', 3, 'Spring 2023', 100, 15),
+(10, 'Economics 101', 'Economics 100', 4, 'Winter 2023', 60, 8),
+(11, 'Psychology 101', 'Psychology 100', 3, 'Fall 2023', 100, 9),
+(12, 'Sociology 101', 'Sociology 100', 4, 'Summer 2023', 200, 10),
+(13, 'Political Science 101', 'Political Science 100', 3, 'Spring 2023', 25, 11),
+(14, 'Geography 101', 'Geography 100', 3, 'Fall 2023', 150, 12),
+(15, 'Physical Education 101', 'Physical Education 100', 4, 'Winter 2023', 200, 13);
 
 -- --------------------------------------------------------
 
@@ -245,21 +246,21 @@ CREATE TABLE `enrollments` (
 --
 
 INSERT INTO `enrollments` (`enrollment_id`, `student_id`, `course_id`, `enrollment_date`) VALUES
-(1, 1, 1, '2023-09-01'),
-(2, 2, 1, '2023-09-02'),
-(3, 3, 3, '2023-09-03'),
-(4, 4, 4, '2023-09-04'),
-(5, 5, 5, '2023-09-05'),
-(6, 6, 6, '2023-09-06'),
-(7, 7, 7, '2023-09-07'),
-(8, 8, 8, '2023-09-08'),
-(9, 9, 9, '2023-09-09'),
-(10, 10, 10, '2023-09-10'),
-(11, 11, 11, '2023-09-11'),
-(12, 12, 12, '2023-09-12'),
-(13, 13, 13, '2023-09-13'),
-(14, 14, 14, '2023-09-14'),
-(15, 15, 15, '2023-09-15');
+(1, 1, 1, '2024-09-01'),
+(2, 1, 2, '2024-09-02'),
+(3, 3, 2, '2024-09-03'),
+(4, 4, 4, '2024-09-04'),
+(5, 5, 5, '2024-09-05'),
+(6, 6, 6, '2024-09-06'),
+(7, 7, 7, '2024-09-07'),
+(8, 8, 8, '2024-09-08'),
+(9, 9, 9, '2024-09-09'),
+(10, 10, 10, '2024-09-10'),
+(11, 11, 11, '2024-09-11'),
+(12, 12, 12, '2024-09-12'),
+(13, 13, 13, '2024-09-13'),
+(14, 14, 14, '2024-09-14'),
+(15, 15, 15, '2024-09-15');
 
 -- --------------------------------------------------------
 
@@ -279,21 +280,21 @@ CREATE TABLE `grades` (
 --
 
 INSERT INTO `grades` (`grade_id`, `enrollment_id`, `assignment_id`, `grade_value`) VALUES
-(16, 1, 1, 'A'),
-(17, 2, 2, 'B'),
-(18, 3, 3, 'A'),
-(19, 4, 4, 'B'),
-(20, 5, 5, 'A'),
-(21, 6, 6, 'B'),
-(22, 7, 7, 'A'),
-(23, 8, 8, 'B'),
-(24, 9, 9, 'A'),
-(25, 10, 10, 'B'),
-(26, 11, 11, 'A'),
-(27, 12, 12, 'B'),
-(28, 13, 13, 'A'),
-(29, 14, 14, 'B'),
-(30, 15, 15, 'A');
+(1, 1, 1, 'A'),
+(2, 2, 1, NULL),
+(3, 3, 3, 'A'),
+(4, 4, 4, 'B'),
+(5, 5, 5, 'A'),
+(6, 6, 6, 'B'),
+(7, 7, 7, 'A'),
+(8, 8, 8, 'B'),
+(9, 9, 9, 'A'),
+(10, 10, 10, 'B'),
+(11, 11, 11, 'A'),
+(12, 12, 12, 'B'),
+(13, 13, 13, 'A'),
+(14, 14, 14, 'B'),
+(15, 15, 15, 'A');
 
 -- --------------------------------------------------------
 
@@ -313,21 +314,21 @@ CREATE TABLE `instructors` (
 --
 
 INSERT INTO `instructors` (`instructor_id`, `name`, `email`, `department_id`) VALUES
-(1, 'Dr. White', 'drwhite@example.com', 1),
-(2, 'Prof. Brown', 'profbrown@example.com', 2),
-(3, 'Ms. Silviya Paskaleva', 'silviya@example.com', 3),
-(4, 'Dr. Black', 'drblack@example.com', 1),
-(5, 'Prof. Gray', 'profgray@example.com', 2),
-(6, 'Ms. Pargol Poshtare', 'pargol@example.com', 3),
-(7, 'Prof. Martinez', 'profmartinez@example.com', 1),
-(8, 'Ms. Thomas', 'msthomas@example.com', 2),
-(9, 'Dr. Garcia', 'drgarcia@example.com', 3),
-(10, 'Prof. Rodriguez', 'profrodriguez@example.com', 1),
-(11, 'Ms. Hernandez', 'mshernandez@example.com', 2),
-(12, 'Dr. King', 'drking@example.com', 3),
-(13, 'Prof. Adams', 'profadams@example.com', 1),
-(14, 'Ms. Campbell', 'mscampbell@example.com', 2),
-(15, 'Dr. Wilson', 'drwilson@example.com', 3);
+(1, 'Dr. White', 'drwhite@gmail.com', 1),
+(2, 'Prof. Brown', 'profbrown@gmail.com', 2),
+(3, 'Ms. Silviya Paskaleva', 'silvia@gmail.com', 3),
+(4, 'Dr. Black', 'drblack@gmail.com', 1),
+(5, 'Prof. Gray', 'profgray@gmail.com', 2),
+(6, 'Ms. Pargol Poshtare', 'pargol@gmail.com', 3),
+(7, 'Prof. Martinez', 'profmartinez@gmail.com', 1),
+(8, 'Ms. Thomas', 'msthomas@gmail.com', 2),
+(9, 'Dr. Garcia', 'drgarcia@gmail.com', 3),
+(10, 'Prof. Rodriguez', 'profrodriguez@gmail.com', 1),
+(11, 'Ms. Hernandez', 'mshernandez@gmail.com', 2),
+(12, 'Dr. King', 'drking@gmail.com', 3),
+(13, 'Prof. Adams', 'profadams@gmail.com', 1),
+(14, 'Ms. Campbell', 'mscampbell@gmail.com', 2),
+(15, 'Dr. Wilson', 'drwilson@gmail.com', 3);
 
 -- --------------------------------------------------------
 
@@ -340,8 +341,10 @@ CREATE TABLE `students` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `dob` date DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
   `class_level` varchar(255) DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL,
+  `previous_department_id` int(11) DEFAULT NULL,
   `advisor_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -349,22 +352,22 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`student_id`, `name`, `email`, `dob`, `class_level`, `department_id`, `advisor_id`) VALUES
-(1, 'Dilip Kumara', 'dilip@example.com', '2000-01-01', 'senior', 1, 1),
-(2, 'Bob Smith', 'bob@example.com', '2000-02-01', 'junior', 2, 2),
-(3, 'Charlie Brown', 'charlie@example.com', '2000-03-01', 'freshman', 3, 3),
-(4, 'David Davis', 'david@example.com', '2000-04-01', 'senior', 4, 4),
-(5, 'Emma Wilson', 'emma@example.com', '2000-05-01', 'junior', 5, 5),
-(6, 'Frank Miller', 'frank@example.com', '2000-06-01', 'freshman', 6, 6),
-(7, 'Grace Taylor', 'grace@example.com', '2000-07-01', 'senior', 7, 7),
-(8, 'Henry Anderson', 'henry@example.com', '2000-08-01', 'junior', 8, 8),
-(9, 'Ivy Thomas', 'ivy@example.com', '2000-09-01', 'freshman', 9, 9),
-(10, 'Jack Roberts', 'jack@example.com', '2000-10-01', 'senior', 10, 10),
-(11, 'Kevin Brown', 'kevin@example.com', '2000-11-01', 'freshman', 11, 11),
-(12, 'Lily Moore', 'lily@example.com', '2000-12-01', 'junior', 12, 12),
-(13, 'Suhas', 'suhas@example.com', '2001-01-01', 'senior', 13, 13),
-(14, 'Noah Taylor', 'noah@example.com', '2001-02-01', 'junior', 14, 14),
-(15, 'Olivia Lee', 'olivia@example.com', '2001-03-01', 'senior', 15, 15);
+INSERT INTO `students` (`student_id`, `name`, `email`, `dob`, `gender`, `class_level`, `department_id`, `previous_department_id`, `advisor_id`) VALUES
+(1, 'Dilip Kumara', 'dilip@gmail.com', '2000-01-01', 'M', 'senior', 1, 1, 1),
+(2, 'Suhas', 'suhas@gmail.com', '2000-02-01', 'M', 'freshman', 2, 2, 2),
+(3, 'Shawani', 'shawani@gmail.com', '2000-03-01', 'F', 'junior', 3, 3, 3),
+(4, 'Suman', 'suman@gmail.com', '2000-04-01', 'F', 'freshman', 4, 3, 4),
+(5, 'Mahee', 'mahee@gmail.com', '2000-05-01', 'F', 'senior', 5, 5, 5),
+(6, 'Subash', 'subash@gmail.com', '2000-06-01', 'M', 'freshman', 6, 6, 6),
+(7, 'Fedric', 'fedric@gmail.com', '2000-07-01', 'M', 'junior', 7, 7, 7),
+(8, 'Erica', 'erika@gmail.com', '2000-08-01', 'F', 'sophomores', 8, 6, 8),
+(9, 'Osmari', 'osmary@gmail.com', '2000-09-01', 'F', 'senior', 9, 9, 9),
+(10, 'Barsha', 'barsha@gmail.com', '2000-10-01', 'F', 'freshman', 10, 10, 10),
+(11, 'Kurpa', 'kurpa@gmail.com', '2000-11-01', 'F', 'senior', 11, 11, 11),
+(12, 'Mothit', 'mothit@gmail.com', '2000-12-01', 'M', 'sophomores', 12, 12, 12),
+(13, 'Nabeel', 'nabeel@gmail.com', '2001-01-01', 'M', 'senior', 13, 1, 13),
+(14, 'Rithika', 'rithika@gmail.com', '2001-02-01', 'F', 'freshman', 14, 14, 14),
+(15, 'Shing', 'singh@gmail.com', '2001-03-01', 'M', 'sophomores', 15, 15, 15);
 
 -- --------------------------------------------------------
 
@@ -387,7 +390,7 @@ INSERT INTO `student_events` (`student_event_id`, `student_id`, `event_id`) VALU
 (2, 2, 1),
 (3, 3, 2),
 (4, 4, 2),
-(5, 5, 3),
+(5, 5, NULL),
 (6, 6, 3),
 (7, 7, 4),
 (8, 8, 4),
@@ -472,6 +475,7 @@ ALTER TABLE `instructors`
 ALTER TABLE `students`
   ADD PRIMARY KEY (`student_id`),
   ADD KEY `department_id` (`department_id`),
+  ADD KEY `previous_department_id` (`previous_department_id`),
   ADD KEY `advisor_id` (`advisor_id`);
 
 --
@@ -526,13 +530,13 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `enrollment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `grade_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `instructors`
@@ -544,7 +548,7 @@ ALTER TABLE `instructors`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `student_events`
@@ -599,7 +603,8 @@ ALTER TABLE `grades`
 --
 ALTER TABLE `students`
   ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`),
-  ADD CONSTRAINT `students_ibfk_2` FOREIGN KEY (`advisor_id`) REFERENCES `academic_advisors` (`advisor_id`);
+  ADD CONSTRAINT `students_ibfk_2` FOREIGN KEY (`previous_department_id`) REFERENCES `departments` (`department_id`),
+  ADD CONSTRAINT `students_ibfk_3` FOREIGN KEY (`advisor_id`) REFERENCES `academic_advisors` (`advisor_id`);
 
 --
 -- Constraints for table `student_events`
