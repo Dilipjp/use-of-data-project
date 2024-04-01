@@ -9,6 +9,7 @@ CREATE TABLE campus_events (
     name VARCHAR(255) NOT NULL,
     date DATE,
     location VARCHAR(255)
+    attendance INT
 );
 CREATE TABLE instructors (
     instructor_id INT AUTO_INCREMENT PRIMARY KEY,
